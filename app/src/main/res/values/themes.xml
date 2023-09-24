@@ -5,5 +5,14 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="BoldText" parent="">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="UrlText" parent="">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
     <style name="Theme.WishList" parent="Base.Theme.WishList" />
 </resources>
