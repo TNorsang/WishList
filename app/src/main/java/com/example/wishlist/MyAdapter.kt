@@ -1,13 +1,10 @@
 package com.example.wishlist
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
-import org.w3c.dom.Text
 
 class MyAdapter(private val wishList: ArrayList<WishListItems>) :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -25,12 +22,18 @@ class MyAdapter(private val wishList: ArrayList<WishListItems>) :
         holder.price.text = currentItem.price
         holder.url.text = currentItem.url
 
-        // Set a long click listener to remove the item
+        // Set a click listener to open the URL when clicked
+        holder.itemView.setOnClickListener {
+            itemClickListener?.onItemClick(currentItem.url)
+        }
+
+        // Set a long click listener to remove the item (as shown in the previous response)
         holder.itemView.setOnLongClickListener {
             removeItem(position)
             true // Return true to consume the long click event
         }
     }
+
 
 
     override fun getItemCount(): Int {
@@ -49,6 +52,18 @@ class MyAdapter(private val wishList: ArrayList<WishListItems>) :
             notifyItemRemoved(position)
         }
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(url: String)
+    }
+
+    private var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
+
+
 
 
 }

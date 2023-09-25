@@ -7,8 +7,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+import android.net.Uri
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MyAdapter.OnItemClickListener {
 
     private lateinit var newRecyclerView : RecyclerView
     private lateinit var newArrayList: ArrayList<WishListItems> // where we grab the Data from WishListItems
@@ -42,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         submitButton.setOnClickListener {
             onUserSubmit()
         }
+
+        val adapter = MyAdapter(newArrayList)
+        adapter.setOnItemClickListener(this) // Assuming 'this' refers to the MainActivity instance
+        newRecyclerView.adapter = adapter
+
+
     }
 
     private fun getUserData() {
@@ -84,4 +92,10 @@ class MainActivity : AppCompatActivity() {
         priceInput.text.clear()
         urlInput.text.clear()
     }
+    override fun onItemClick(url: String) {
+        // Launch the URL in a web browser
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
 }
