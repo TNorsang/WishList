@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var newRecyclerView : RecyclerView
     private lateinit var newArrayList: ArrayList<WishListItems> // where we grab the Data from WishListItems
 
+
     lateinit var title : Array<String>
     lateinit var price : Array<String>
     lateinit var url : Array<String>
