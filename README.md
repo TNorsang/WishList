@@ -4,35 +4,28 @@ Submitted by: **Norsang Nyandak**
 
 **WishList** is a wishlist app that helps the user keep track of what they want to buy.
 
-Time spent: **X** hours spent in total
+Time spent: **9** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] **User can add an item to their wishlist**
-- [ ] **User can see their list of items based on previously inputted items**
+- [X] **User can add an item to their wishlist**
+- [X] **User can see their list of items based on previously inputted items**
 
 The following **optional** features are implemented:
 
-- [ ] Wishlist app is 🎨 **customized** 🎨
-- [ ] User can delete an item by long pressing on the item
-- [ ] User can open an item's URL by clicking on the item
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
+- [X] Wishlist app is 🎨 **customized** 🎨
+- [X] User can delete an item by long pressing on the item
+- [X] User can open an item's URL by clicking on the item
 
 
 ![WishList](https://github.com/TNorsang/WishList/assets/33474625/91700aa3-f6b1-41a6-a503-6aa784214472)
 
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Norsang Nyandak]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
