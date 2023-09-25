@@ -9,21 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import org.w3c.dom.Text
 
-class MyAdapter(private val wishList: ArrayList<WishListItems>) : RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+class MyAdapter(private val wishList: ArrayList<WishListItems>) :
+    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_layout,
             parent, false)
         return MyViewHolder(itemView)
 
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val currentItem = wishList[position]
+        holder.title.text = currentItem.title
+        holder.price.text = currentItem.price
+        holder.url.text = currentItem.url
     }
 
     override fun getItemCount(): Int {
-
         return wishList.size
     }
 

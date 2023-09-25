@@ -1,3 +1,3 @@
 package com.example.wishlist
 
-data class WishListItems(var title: String, var price: Int, var url: String)
+data class WishListItems(var title: String, var price: String, var url: String)
