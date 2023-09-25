@@ -2,6 +2,9 @@ package com.example.wishlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -9,7 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var newRecyclerView : RecyclerView
     private lateinit var newArrayList: ArrayList<WishListItems> // where we grab the Data from WishListItems
-
 
     lateinit var title : Array<String>
     lateinit var price : Array<String>
@@ -20,24 +22,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         title = arrayOf(
-            "DJI Mini 3 Pro",
-            "DJI Mini 3",
-            "DJI Mini 2",
-            "DJI Mini 2 SE"
         )
 
         price = arrayOf(
-            "$990",
-            "$600",
-            "$400",
-            "$350"
         )
 
         url = arrayOf(
-            "www.dji.com",
-            "www.dji.com",
-            "www.dji.com",
-            "www.dji.com"
         )
 
         newRecyclerView = findViewById(R.id.RecyclerView)
@@ -47,15 +37,51 @@ class MainActivity : AppCompatActivity() {
         newArrayList = arrayListOf()
         getUserData()
 
-
+        // Initialize the submit button and set a click listener
+        val submitButton = findViewById<Button>(R.id.submitButton)
+        submitButton.setOnClickListener {
+            onUserSubmit()
+        }
     }
 
     private fun getUserData() {
-        for(i in title.indices){
-            val wish = WishListItems(title[i],price[i],url[i])
+        for (i in title.indices) {
+            val wish = WishListItems(title[i], price[i], url[i])
             newArrayList.add(wish)
         }
 
         newRecyclerView.adapter = MyAdapter(newArrayList)
+    }
+
+    private fun onUserSubmit() {
+        val newItemTitle = findViewById<EditText>(R.id.titleInput).text.toString()
+        val newItemPrice = findViewById<EditText>(R.id.priceInput).text.toString()
+        val newItemUrl = findViewById<EditText>(R.id.urlInput).text.toString()
+
+        // Check if any of the input fields is empty
+        if (newItemTitle.isEmpty() || newItemPrice.isEmpty() || newItemUrl.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Create a new WishListItems object and add it to the list
+        val newItem = WishListItems(newItemTitle, newItemPrice, newItemUrl)
+        newArrayList.add(newItem)
+
+        // Notify the adapter that the data has changed
+        newRecyclerView.adapter?.notifyDataSetChanged()
+
+        // Clear input fields
+        clearInputFields()
+    }
+
+    private fun clearInputFields() {
+        val titleInput = findViewById<EditText>(R.id.titleInput)
+        val priceInput = findViewById<EditText>(R.id.priceInput)
+        val urlInput = findViewById<EditText>(R.id.urlInput)
+
+        titleInput.text.clear()
+        priceInput.text.clear()
+        urlInput.text.clear()
     }
 }
