@@ -19,8 +19,7 @@ The following **optional** features are implemented:
 - [X] User can delete an item by long pressing on the item
 - [X] User can open an item's URL by clicking on the item
 
-
-![WishList](https://github.com/TNorsang/WishList/assets/33474625/91700aa3-f6b1-41a6-a503-6aa784214472)
+![WishListSecondGif](https://github.com/TNorsang/WishList/assets/33474625/766e4bdc-5fd6-4fa4-a31f-11fccb584996)
 
 
 ## License
